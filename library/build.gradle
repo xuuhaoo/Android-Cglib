@@ -25,11 +25,11 @@ android {
     }
 }
 
-group= 'com.github.xuuhaoo'
-version='1.1.2'
+group = 'com.github.xuuhaoo'
+version = '1.1.2'
 
 dependencies {
-    api 'com.android.support:appcompat-v7:' + project.SUPPORT_LIBRARY_VERSION
+    api 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.linkedin.dexmaker:dexmaker-mockito:2.28.0'
 }
 
