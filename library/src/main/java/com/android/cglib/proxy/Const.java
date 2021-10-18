@@ -2,9 +2,9 @@ package com.android.cglib.proxy;
 
 public class Const {
 	
-	public static final String SUBCLASS_SUFFIX = "$Enhancer$";
+	public static final String SUBCLASS_SUFFIX = "_$Enhancer";
 	
-	public static final String SUBCLASS_INVOKE_SUPER_SUFFIX = "$Super$";
+	public static final String SUBCLASS_INVOKE_SUPER_SUFFIX = "_$Super";
 	
 	public static Class getPackedType(Class primitive) {
 		if (primitive == boolean.class) {
