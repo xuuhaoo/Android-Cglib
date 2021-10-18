@@ -19,8 +19,8 @@ class MyProxy(private val context: Context) : MethodInterceptor {
   override fun intercept(enhancer: Any?, args: Array<Any>?, methodProxy: MethodProxy): Any? {
     Log.i(
       "MyProxy", "methodName:${methodProxy.methodName} " +
-          "originalMethodClass:${methodProxy.originalMethod} " +
-          "proxyMethodClass:${methodProxy.proxyMethod} " +
+          "originalMethodClass:${methodProxy.enhancerMethod} " +
+          "proxyMethodClass:${methodProxy.superProxyEnhancerMethod} " +
           "enhancer:${enhancer?.javaClass?.name} " +
           "args:${Arrays.toString(args)}"
     )

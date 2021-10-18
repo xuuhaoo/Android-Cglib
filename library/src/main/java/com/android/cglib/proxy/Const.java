@@ -46,7 +46,7 @@ public class Const {
 		} else if (primitive == short.class) {
 			return "shortValue";
 		} else {
-			throw new ProxyException(primitive.getName() + " dit not primitive class");
+			throw new EnhancerProxyException(primitive.getName() + " dit not primitive class");
 		}
 	}
 
