@@ -34,7 +34,7 @@ public class Enhancer {
     this.interceptor = interceptor;
   }
 
-  public Object create() {
+  public Object create(File cacheDir) {
     String superClsName = superclass.getName().replace(".", "/");
     String subClsName = superClsName + Const.SUBCLASS_SUFFIX;
 
@@ -42,13 +42,11 @@ public class Enhancer {
     TypeId<?> superType = TypeId.get("L" + superClsName + ";");
     TypeId<?> subType = TypeId.get("L" + subClsName + ";");
 
-    String cacheDir = context.getDir("dexfiles", Context.MODE_PRIVATE).getAbsolutePath();
-
     DexMaker dexMaker = new DexMaker();
     dexMaker.declare(subType, superClsName + ".proxy", Modifier.PUBLIC, superType, interfaceTypeId);
     generateFieldsAndMethods(dexMaker, superType, subType);
     try {
-      ClassLoader loader = dexMaker.generateAndLoad(Enhancer.class.getClassLoader(), new File(cacheDir));
+      ClassLoader loader = dexMaker.generateAndLoad(Enhancer.class.getClassLoader(), cacheDir);
       Class<?> subCls = loader.loadClass(superclass.getName() + Const.SUBCLASS_SUFFIX);
       Object obj = subCls.newInstance();
       ((EnhancerInterface) obj).setMethodInterceptor$Enhancer$(interceptor);
