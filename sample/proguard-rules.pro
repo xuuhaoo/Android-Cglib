@@ -15,3 +15,5 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class com.android.cglib.proxy.EnhancerInterface { *; }
+-keep class com.android.cglib.proxy.MethodProxyExecuter { *; }

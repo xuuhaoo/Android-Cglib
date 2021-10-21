@@ -5,14 +5,21 @@ import android.util.Log
 import com.android.cglib.proxy.Enhancer
 import com.android.cglib.proxy.MethodInterceptor
 import com.android.cglib.proxy.MethodProxy
+import java.io.File
 import java.util.Arrays
 
-class MyProxy(private val context: Context) : MethodInterceptor {
-  fun getProxy(cls: Class<*>?): Any {
-    val e = Enhancer(context)
-    e.setSuperclass(cls)
-    e.setInterceptor(this)
-    return e.create()
+class MyProxy(private val context: Context, private val original: Any) : MethodInterceptor {
+  fun getProxy(): Any {
+    val clsName: String = original.javaClass.name.replace(".", "/")
+    val clsDir = File(context.cacheDir, clsName)
+    if (clsDir.exists()) {
+      clsDir.deleteRecursively()
+    }
+    clsDir.mkdirs()
+    val enhancer = Enhancer(context)
+    enhancer.setSuperclass(original.javaClass)
+    enhancer.setInterceptor(this)
+    return enhancer.create(clsDir)
   }
 
   @Throws(Exception::class)
@@ -24,6 +31,7 @@ class MyProxy(private val context: Context) : MethodInterceptor {
           "enhancer:${enhancer?.javaClass?.name} " +
           "args:${Arrays.toString(args)}"
     )
+    methodProxy.invokeSuper(original, args)
     return null
   }
 }

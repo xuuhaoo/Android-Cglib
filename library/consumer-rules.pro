@@ -1,0 +1,2 @@
+-keep class com.android.cglib.proxy.EnhancerInterface { *; }
+-keep class com.android.cglib.proxy.MethodProxyExecuter { *; }

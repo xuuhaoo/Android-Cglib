@@ -13,14 +13,16 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    api project(':library')
+    api 'com.github.xuuhaoo:Android-Cglib:1.1.8'
+
+//    api project(':library')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20"
     api 'com.android.support:appcompat-v7:27.1.1'
 }
