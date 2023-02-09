@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "leo.android.cglib.sample"
         minSdkVersion 15
-        targetSdkVersion 27
+
         versionCode 1
         versionName "1.0"
     }
@@ -20,9 +20,9 @@ android {
 }
 
 dependencies {
-    api 'com.github.xuuhaoo:Android-Cglib:1.1.8'
+//    api 'com.github.xuuhaoo:Android-Cglib:1.1.8'
 
-//    api project(':library')
+    api project(':library')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.20"
     api 'com.android.support:appcompat-v7:27.1.1'
 }

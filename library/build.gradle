@@ -6,7 +6,6 @@ android {
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -26,9 +25,9 @@ android {
 }
 
 group = 'com.github.xuuhaoo'
-version = '1.1.9'
+version = '1.2.0'
 
 dependencies {
-    api 'com.linkedin.dexmaker:dexmaker:2.28.1'
+    api 'com.linkedin.dexmaker:dexmaker:2.28.3'
 }
 
