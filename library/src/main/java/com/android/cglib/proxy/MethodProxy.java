@@ -42,6 +42,7 @@ public class MethodProxy {
       return ((EnhancerInterface) object).executeSuperMethod$Enhancer$(methodName, argsType, argsValue);
     } else {
       Method method = object.getClass().getDeclaredMethod(methodName, argsType);
+      method.setAccessible(true);
       return method.invoke(object, argsValue);
     }
   }

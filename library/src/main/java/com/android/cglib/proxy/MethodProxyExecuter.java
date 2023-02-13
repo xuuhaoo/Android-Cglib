@@ -22,6 +22,7 @@ public class MethodProxyExecuter {
   public static Object executeMethod(Class subClass, String methodName, Class[] argsType, Object[] argsValue, Object object) {
     try {
       Method method = subClass.getDeclaredMethod(methodName + Const.SUBCLASS_INVOKE_SUPER_SUFFIX, argsType);
+      method.setAccessible(true);
       return method.invoke(object, argsValue);
     } catch (Throwable e) {
       throw new EnhancerProxyException(e);

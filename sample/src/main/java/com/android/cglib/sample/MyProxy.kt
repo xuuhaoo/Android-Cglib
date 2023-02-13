@@ -25,10 +25,10 @@ class MyProxy(private val context: Context, private val original: Any) : MethodI
   @Throws(Exception::class)
   override fun intercept(enhancer: Any?, args: Array<Any>?, methodProxy: MethodProxy): Any? {
     Log.i(
-      "MyProxy", "methodName:${methodProxy.methodName} " +
-          "originalMethodClass:${methodProxy.enhancerMethod} " +
-          "proxyMethodClass:${methodProxy.superProxyEnhancerMethod} " +
-          "enhancer:${enhancer?.javaClass?.name} " +
+      "MyProxy", "methodName:${methodProxy.methodName} \n" +
+          "originalMethod:${methodProxy.enhancerMethod} \n" +
+          "proxyMethod:${methodProxy.superProxyEnhancerMethod} \n" +
+          "enhancerClassName:${enhancer?.javaClass?.name} \n" +
           "args:${Arrays.toString(args)}"
     )
     methodProxy.invokeSuper(original, args)
